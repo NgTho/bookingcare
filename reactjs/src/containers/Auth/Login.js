@@ -59,6 +59,11 @@ class Login extends Component {
             issShowpassWord: !this.state.issShowpassWord
         })
     }
+    handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            this.submitBtn();
+        }
+    }
     render() {
         return (
             <div className='login-background'>
@@ -72,7 +77,7 @@ class Login extends Component {
                         <div className='col-12 form-group'>
                             <label>Password</label>
                             <div className='custom-input-password'>
-                                <input type={this.state.issShowpassWord ? 'text' : 'password'} className='form-control login-input' placeholder='Enter your password' value={this.state.passWord} onChange={this.changePassword} />
+                                <input type={this.state.issShowpassWord ? 'text' : 'password'} className='form-control login-input' placeholder='Enter your password' value={this.state.passWord} onChange={this.changePassword} onKeyDown={this.handleKeyDown} />
                                 <i className={this.state.issShowpassWord ? 'far fa-eye-slash' : 'far fa-eye'} onClick={this.showHidepassWord}></i>
                             </div>
 
@@ -93,7 +98,7 @@ class Login extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

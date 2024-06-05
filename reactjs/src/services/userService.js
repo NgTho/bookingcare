@@ -14,7 +14,7 @@ let deleteUser = (id) => {
 let updateUser = (data) => {
     return axios.put('/api/edit-user', data)
 }
-let getAllcode = (type) => {
+let getAllCode = (type) => {
     return axios.get(`/api/allcode/${type}`)
 }
 let getRole = (roleId, limit) => {
@@ -26,4 +26,10 @@ let createMarkdown = (data) => {
 let getDetail = (id) => {
     return axios.get(`/api/get-detail/${id}`)
 }
-export { handleLogin, getUser, createUser, deleteUser, updateUser, getAllcode, getRole, createMarkdown, getDetail }
+let bulkCreateSchedule = (data) => {
+    return axios.post('/api/bulk-create-schedule', data)
+}
+let getSchedule = (id, date) => {
+    return axios.get(`/api/get-schedule/${id}/${date}`)
+}
+export { handleLogin, getUser, createUser, deleteUser, updateUser, getAllCode, getRole, createMarkdown, getDetail, bulkCreateSchedule, getSchedule }

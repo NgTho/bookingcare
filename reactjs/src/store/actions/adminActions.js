@@ -1,6 +1,6 @@
 import actionTypes from './actionTypes';
 import {
-    getAllcode,
+    getAllCode,
     createUser,
     getUser,
     updateUser,
@@ -10,63 +10,12 @@ import {
     getDetail,
 } from '../../services/userService';
 import { ToastContainer, toast } from 'react-toastify';
-export const getGenderStart = () => {
-    return async (dispatch, getState) => {
-        try {
-            dispatch({ type: actionTypes.GET_GENDER_START });
-            let data = await getAllcode('gender');
-            if (data && data.errCode === 0) {
-                dispatch(getGenderSuccess(data.data));
-            } else {
-                dispatch(getGenderFail());
-            }
-        } catch (e) {
-            dispatch(getGenderFail());
-            console.log(e);
-        }
-    }
-}
-
-export const getGenderSuccess = (data) => ({
-    type: actionTypes.GET_GENDER_SUCCESS,
-    data: data
-})
-
-export const getGenderFail = () => ({
-    type: actionTypes.GET_GENDER_FAIL
-})
-///////////////////////////////////////////
-export const getPositionStart = () => {
-    return async (dispatch, getState) => {
-        try {
-            dispatch({ type: actionTypes.GET_POSITION_START });
-            let data = await getAllcode('position');
-            if (data && data.errCode === 0) {
-                dispatch(getPositionSuccess(data.data));
-            } else {
-                dispatch(getPositionFail());
-            }
-        } catch (e) {
-            dispatch(getPositionFail());
-            console.log(e);
-        }
-    }
-}
-
-export const getPositionSuccess = (data) => ({
-    type: actionTypes.GET_POSITION_SUCCESS,
-    data: data
-})
-
-export const getPositionFail = () => ({
-    type: actionTypes.GET_POSITION_FAIL
-})
 /////////////////////////////////////////////
 export const getRoleStart = () => {
     return async (dispatch, getState) => {
         try {
             dispatch({ type: actionTypes.GET_ROLE_START });
-            let data = await getAllcode('role');
+            let data = await getAllCode('role');
             if (data && data.errCode === 0) {
                 dispatch(getRoleSuccess(data.data));
             } else {
@@ -286,4 +235,45 @@ export const getDetailSuccess = (data) => ({
 
 export const getDetailFail = () => ({
     type: actionTypes.GET_DETAIL_FAIL
+})
+
+/////////////////////////////////////////////
+export const getAllCodeStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let gender = await getAllCode('GENDER');
+            let position = await getAllCode('POSITION');
+            let time = await getAllCode('TIME');
+            let price = await getAllCode('PRICE');
+            let payment = await getAllCode('PAYMENT');
+            let province = await getAllCode('PROVINCE');
+
+            if (gender && gender.errCode === 0 && position && position.errCode === 0 && time && time.errCode === 0 && price && price.errCode === 0 && payment && payment.errCode === 0 && province && province.errCode === 0) {
+                let data = {
+                    gender: gender.data,
+                    position: position.data,
+                    time: time.data,
+                    price: price.data,
+                    payment: payment.data,
+                    province: province.data,
+                }
+                console.log(data);
+                dispatch(getAllCodeSuccess(data));
+            } else {
+                dispatch(getAllCodeFail());
+            }
+        } catch (e) {
+            dispatch(getAllCodeFail());
+            console.log(e);
+        }
+    }
+}
+
+export const getAllCodeSuccess = (data) => ({
+    type: actionTypes.GET_ALLCODE_SUCCESS,
+    data: data
+})
+
+export const getAllCodeFail = () => ({
+    type: actionTypes.GET_ALLCODE_FAIL
 })

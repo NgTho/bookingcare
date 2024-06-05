@@ -1,0 +1,17 @@
+.manage-schedule {
+    margin-bottom: 100px;
+
+    .list-time {
+        display        : flex;
+        align-items    : center;
+        justify-content: center;
+        gap            : 10px;
+
+        button {
+            color           : #555;
+            border          : 1px solid #555;
+            background-color: #fff;
+            width           : 100%;
+        }
+    }
+}

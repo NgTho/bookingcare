@@ -5,6 +5,8 @@ import * as actions from '../../../store/actions';
 import HomeHeader from '../../Homepage/HomeHeader';
 import '../../Homepage/HomeHeader.scss';
 import './DetailDoctor.scss';
+import ScheduleDoctor from './ScheduleDoctor';
+import { FormattedMessage } from 'react-intl';
 class DetailDoctor extends Component {
     constructor(props) {
         super(props);
@@ -59,33 +61,51 @@ class DetailDoctor extends Component {
             <>
                 <HomeHeader isShowBanner={false} />
                 <div className='section detail'>
-                    <div className='container'>
-                        <div className='top1'>
-                            <div className='container'>
-                                <div className="row">
-                                    <div className="col-2">
-                                        <div className='bl1' style={{ backgroundImage: `url(${image})` }}>
-                                        </div>
+                    <div className='top1'>
+                        <div className='container'>
+                            <div className="row">
+                                <div className="col-2">
+                                    <div className='bl1' style={{ backgroundImage: `url(${image})` }}>
                                     </div>
-                                    <div className="col-10">
-                                        <div className='bl2'>
-                                            <p className='t1'>{name}</p>
-                                            <p>{description}</p>
-                                        </div>
+                                </div>
+                                <div className="col-10">
+                                    <div className='bl2'>
+                                        <p className='t1'>{name}</p>
+                                        <p>{description}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <hr></hr>
-                        <div className='top2'>
-                            <div dangerouslySetInnerHTML={{ __html: content }}></div>
-                        </div>
-                        <div className='top3'>
+                    </div>
 
-                        </div>
-                        <div className='top4'>
+                    <div className='top2'>
+                        <div className='container'>
+                            <div className='row'>
+                                <div className='col-7'>
+                                    <div className='left'>
+                                        <ScheduleDoctor />
+                                    </div>
+                                </div>
+                                <div className='col-5'>
+                                    <div className='right'>
 
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <hr></hr>
+                    <div className='top3'>
+                        <div className='container'>
+                            <div className='row'>
+                                <div className='col-12'>
+                                    <div dangerouslySetInnerHTML={{ __html: content }}></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='top4'>
+
                     </div>
                 </div>
 

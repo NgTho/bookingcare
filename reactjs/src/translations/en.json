@@ -35,6 +35,9 @@
             "manage-specialty":"Manage Specialties",
             "handbook":"Handbook",
             "manage-handbook":"Manage handbook"
+        },
+        "doctor":{
+            "manage-schedule":"Manage Schedule"
         }
     },
     "manage-user":{
@@ -55,5 +58,26 @@
     "homepage":{
         "outstanding-doctor":"Last week's featured doctor",
         "more-info":"More info"
+    },
+    "detail":{
+        "schedule":"Schedule",
+        "choose":"Choose",
+        "book-free":" and booking free",
+        "no-schedule":"No schedule"
+    },
+    "admin":{
+        "manage-doctor":{
+            "title":"Create more infomation doctors",
+            "select-doctor":"Select doctor",
+            "intro":"Introduction",
+            "add":"Create info",
+            "save":"Save info",
+            "price":"Price",
+            "payment":"Payment method",
+            "province":"Province",
+            "name-clinic":"Clinic's name",
+            "address-clinic":"Clinic's address",
+            "note":"Note"
+        }
     }
 }

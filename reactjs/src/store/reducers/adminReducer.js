@@ -1,9 +1,7 @@
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    gender: [],
     role: [],
-    position: [],
     isLoading: false,
     resCreate: {},
     resDelete: {},
@@ -11,46 +9,12 @@ const initialState = {
     users: [],
     roleData: [],
     detailData: {},
+    allCodeData: {},
 }
 
 const adminReducer = (state = initialState, action) => {
 
     switch (action.type) {
-
-        case actionTypes.GET_GENDER_START:
-            state.isLoading = true;
-            return {
-                ...state
-            }
-
-        case actionTypes.GET_GENDER_SUCCESS:
-            state.gender = action.data;
-            state.isLoading = false;
-            return {
-                ...state
-            }
-        case actionTypes.GET_GENDER_FAIL:
-            state.gender = [];
-            state.isLoading = false;
-            return {
-                ...state
-            }
-        //////////////////////////////////////
-        case actionTypes.GET_POSITION_START:
-            return {
-                ...state
-            }
-
-        case actionTypes.GET_POSITION_SUCCESS:
-            state.position = action.data;
-            return {
-                ...state
-            }
-        case actionTypes.GET_POSITION_FAIL:
-            state.position = [];
-            return {
-                ...state
-            }
         ///////////////////////////////////
         case actionTypes.GET_ROLE_START:
             return {
@@ -164,6 +128,23 @@ const adminReducer = (state = initialState, action) => {
             }
         case actionTypes.GET_DETAIL_FAIL:
             state.detailData = {};
+            return {
+                ...state
+            }
+        ///////////////////////////////////
+        case actionTypes.GET_ALLCODE_START:
+            return {
+                ...state
+            }
+
+        case actionTypes.GET_ALLCODE_SUCCESS:
+            state.allCodeData = action.data;
+            //console.log(state);
+            return {
+                ...state
+            }
+        case actionTypes.GET_ALLCODE_FAIL:
+            state.allCodeData = {};
             return {
                 ...state
             }

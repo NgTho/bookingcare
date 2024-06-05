@@ -2,6 +2,8 @@ import {
     getRoleData,
     createMarkdownData,
     getDetailData,
+    bulkCreateScheduleData,
+    getScheduleData
 } from '../services/doctorServices';
 let getRole = async (req, res) => {
     let limit = req.body.limit;
@@ -24,14 +26,9 @@ let getRole = async (req, res) => {
     return res.status(200).json(data);
 }
 let createMarkdown = async (req, res) => {
-    console.log(req.body);
-    if (!req.body.doctorId || !req.body.contentHTML || !req.body.contentMarkdown) {
-        return res.status(200).json({
-            errCode: 1,
-            errMessage: 'Missing input data'
-        })
-    }
+    //console.log('req: ', req.body);
     let data = await createMarkdownData(req.body);
+    console.log(data);
     if (!data) {
         return res.status(200).json({
             errCode: 1,
@@ -59,4 +56,26 @@ let getDetail = async (req, res) => {
     }
     return res.status(200).json(data);
 }
-export { getRole, createMarkdown, getDetail }
+let bulkCreateSchedule = async (req, res) => {
+    let data = await bulkCreateScheduleData(req.body);
+    if (!data) {
+        return res.status(200).json({
+            errCode: 1,
+            errMessage: 'Error'
+        })
+    }
+    return res.status(200).json(data);
+}
+let getSchedule = async (req, res) => {
+    let id = req.params.id;
+    let date = req.params.date;
+    let data = await getScheduleData(id, date);
+    if (!data) {
+        return res.status(200).json({
+            errCode: 1,
+            errMessage: 'Error'
+        })
+    }
+    return res.status(200).json(data);
+}
+export { getRole, createMarkdown, getDetail, bulkCreateSchedule, getSchedule }

@@ -34,6 +34,10 @@
             "manage-specialty":"Quản lý chuyên khoa",
             "handbook":"Cẩm nang",
             "manage-handbook":"Quản lý cẩm nang"
+        },
+        "doctor":{
+            "manage-schedule":"Quản lý kế hoạch"
+            
         }
     },
     "manage-user":{
@@ -54,5 +58,26 @@
     "homepage":{
         "outstanding-doctor":"Bác sĩ nổi bật tuần qua",
         "more-info":"Xem thêm"
+    },
+    "detail":{
+        "schedule":"Lịch khám",
+        "choose":"Chọn",
+        "book-free":" và đặt lịch miễn phí",
+        "no-schedule":"Không có lịch hẹn"
+    },
+    "admin":{
+        "manage-doctor":{
+            "title":"Thêm thông tin bác sĩ",
+            "select-doctor":"Chọn bác sĩ",
+            "intro":"Thông tin giới thiệu",
+            "add":"Tạo thông tin",
+            "save":"Lưu thông tin",
+            "price":"Giá khám bệnh",
+            "payment":"Phương thức thanh toán",
+            "province":"Tỉnh thành",
+            "name-clinic":"Tên phòng khám",
+            "address-clinic":"Địa chỉ phòng khám",
+            "note":"Ghi chú"
+        }
     }
 }

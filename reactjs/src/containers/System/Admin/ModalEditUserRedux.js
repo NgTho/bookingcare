@@ -53,8 +53,7 @@ class ModalEditUserRedux extends Component {
         }
     }
     async componentDidMount() {
-        await this.props.getGenderStart();
-        await this.props.getPositionStart();
+        await this.props.getAllCodeStart();
         await this.props.getRoleStart();
     }
 
@@ -100,7 +99,7 @@ class ModalEditUserRedux extends Component {
         }
     }
     render() {
-        let { language: lang, isLoading, genderData, positionData, roleData } = this.props;
+        let { language: lang, isLoading, allCodeData, roleData } = this.props;
         let { isOpen, url } = this.state;
         let { firstName, lastName, email, address, phoneNumber, gender, position, role, avatar } = this.state;
         console.log(this.state);
@@ -158,7 +157,7 @@ class ModalEditUserRedux extends Component {
                                                 <label htmlFor=""><FormattedMessage id='manage-user.gender' /></label>
                                                 <select name="gender" value={gender} className="form-control" onChange={(e) => this.changeInput('gender', e)} >
                                                     {
-                                                        genderData && genderData.length > 0 && genderData.map(item => {
+                                                        allCodeData && allCodeData.gender && allCodeData.gender.length > 0 && allCodeData.gender.map(item => {
                                                             return (
                                                                 <option value={item.keyMap} key={item.keyMap}>{lang === 'vi' ? item.valueVi : item.valueEn}</option>
                                                             )
@@ -170,7 +169,7 @@ class ModalEditUserRedux extends Component {
                                                 <label htmlFor=""><FormattedMessage id='manage-user.position' /></label>
                                                 <select name="position" value={position} className="form-control" onChange={(e) => this.changeInput('position', e)}>
                                                     {
-                                                        positionData && positionData.length > 0 && positionData.map(item => {
+                                                        allCodeData && allCodeData.position && allCodeData.position.length > 0 && allCodeData.position.map(item => {
                                                             return (
                                                                 <option value={item.keyMap} key={item.keyMap}>{lang === 'vi' ? item.valueVi : item.valueEn}</option>
                                                             )
@@ -231,8 +230,7 @@ class ModalEditUserRedux extends Component {
 const mapStateToProps = state => {
     return {
         language: state.app.language,
-        genderData: state.admin.gender,
-        positionData: state.admin.position,
+        allCodeData: state.admin.allCodeData,
         roleData: state.admin.role,
         isLoading: state.admin.isLoading
     };
@@ -240,8 +238,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getGenderStart: () => dispatch(actions.getGenderStart()),
-        getPositionStart: () => dispatch(actions.getPositionStart()),
+        getAllCodeStart: () => dispatch(actions.getAllCodeStart()),
         getRoleStart: () => dispatch(actions.getRoleStart())
     };
 };

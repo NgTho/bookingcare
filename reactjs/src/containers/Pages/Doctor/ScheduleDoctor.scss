@@ -1,0 +1,38 @@
+.schedule {
+    margin: 20px 0px;
+
+    .t1 {
+        font-size     : 16px;
+        margin        : 20px 0px;
+        display       : flex;
+        align-items   : baseline;
+        gap           : 5px;
+        text-transform: uppercase;
+    }
+
+    .bl1 {
+        button {
+            background-color: #fff8ae;
+            border-radius   : 0px;
+            color           : #333;
+            font-weight     : bold;
+            outline         : none;
+            box-shadow      : unset !important;
+            margin          : 0px 20px 20px 0px;
+
+            &:hover {
+                color           : #fff;
+                background-color: #45c3d2;
+            }
+        }
+    }
+
+    .css-13cymwt-control {
+        border       : 0px;
+        border-bottom: 1px solid #333 !important;
+        border-radius: 0px;
+        color        : #337ab7;
+        font-weight  : bold;
+        outline      : none !important;
+    }
+}

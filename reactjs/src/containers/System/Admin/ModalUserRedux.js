@@ -49,8 +49,7 @@ class ModalUserRedux extends Component {
         }
     }
     async componentDidMount() {
-        await this.props.getGenderStart();
-        await this.props.getPositionStart();
+        await this.props.getAllCodeStart();
         await this.props.getRoleStart();
 
     }
@@ -58,15 +57,15 @@ class ModalUserRedux extends Component {
 
     // Khởi tạo giá trị ban đầu
     componentDidUpdate(prevProps, prevState) {
-        let { genderData, positionData, roleData, clearModal } = this.props;
-        if (genderData && genderData.length > 0 && prevProps.genderData !== genderData) {
+        let { allCodeData, roleData, clearModal } = this.props;
+        if (allCodeData && allCodeData.gender && allCodeData.gender.length > 0 && prevProps.allCodeData !== allCodeData) {
             this.setState({
-                gender: genderData[0].keyMap
+                gender: allCodeData.gender[0].keyMap
             })
         }
-        if (positionData && positionData.length > 0 && prevProps.positionData !== positionData) {
+        if (allCodeData && allCodeData.position && allCodeData.position.length > 0 && prevProps.allCodeData !== allCodeData) {
             this.setState({
-                position: positionData[0].keyMap
+                position: allCodeData.position[0].keyMap
             })
         }
         if (roleData && roleData.length > 0 && prevProps.roleData !== roleData) {
@@ -85,8 +84,8 @@ class ModalUserRedux extends Component {
                 password: '',
                 address: '',
                 phoneNumber: '',
-                gender: genderData[0].keyMap,
-                position: positionData[0].keyMap,
+                gender: allCodeData.gender[0].keyMap,
+                position: allCodeData.position[0].keyMap,
                 role: roleData[0].keyMap,
                 avatar: ''
             })
@@ -111,7 +110,7 @@ class ModalUserRedux extends Component {
         }
     }
     render() {
-        let { language: lang, isLoading, genderData, positionData, roleData } = this.props;
+        let { language: lang, isLoading, allCodeData, roleData } = this.props;
         let { isOpen, url } = this.state;
         let { firstName, lastName, email, password, address, phoneNumber, gender, position, role, avatar } = this.state;
         return (
@@ -168,7 +167,7 @@ class ModalUserRedux extends Component {
                                                 <label htmlFor=""><FormattedMessage id='manage-user.gender' /></label>
                                                 <select name="gender" className="form-control" onChange={(e) => this.changeInput('gender', e)}>
                                                     {
-                                                        genderData && genderData.length > 0 && genderData.map(item => {
+                                                        allCodeData && allCodeData.gender && allCodeData.gender.length > 0 && allCodeData.gender.map(item => {
                                                             return (
                                                                 <option value={item.keyMap} key={item.keyMap}>{lang === 'vi' ? item.valueVi : item.valueEn}</option>
                                                             )
@@ -180,7 +179,7 @@ class ModalUserRedux extends Component {
                                                 <label htmlFor=""><FormattedMessage id='manage-user.position' /></label>
                                                 <select name="position" className="form-control" onChange={(e) => this.changeInput('position', e)}>
                                                     {
-                                                        positionData && positionData.length > 0 && positionData.map(item => {
+                                                        allCodeData && allCodeData.position && allCodeData.position.length > 0 && allCodeData.position.map(item => {
                                                             return (
                                                                 <option value={item.keyMap} key={item.keyMap}>{lang === 'vi' ? item.valueVi : item.valueEn}</option>
                                                             )
@@ -241,8 +240,7 @@ class ModalUserRedux extends Component {
 const mapStateToProps = state => {
     return {
         language: state.app.language,
-        genderData: state.admin.gender,
-        positionData: state.admin.position,
+        allCodeData: state.admin.allCodeData,
         roleData: state.admin.role,
         isLoading: state.admin.isLoading
     };
@@ -250,8 +248,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getGenderStart: () => dispatch(actions.getGenderStart()),
-        getPositionStart: () => dispatch(actions.getPositionStart()),
+        getAllCodeStart: () => dispatch(actions.getAllCodeStart()),
         getRoleStart: () => dispatch(actions.getRoleStart())
     };
 };
